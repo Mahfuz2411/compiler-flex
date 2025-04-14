@@ -2,16 +2,11 @@
 #include <stdio.h>    
 %}
 
-%%
-"+"   {printf("PLUS\n");}  
-"-"   {printf("MINUS\n");}  
-"*"   {printf("MULTIPLY\n");}  
-"/"   {printf("DIVIDE\n");}  
-"=="  {printf("ASSIGN\n");}  
-"="   {printf("EQUALS\n");}  
-.     {printf("Unknown\n");}
-%%
+WORD   [a-zA-Z]
 
+%%
+{WORD}+  {printf("Word: %s\n", yytext);}
+%%
 
 int yywrap() {
     return 1;
